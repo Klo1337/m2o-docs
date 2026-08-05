@@ -38,7 +38,7 @@ Start the local development server:
 pnpm dev
 ```
 
-Open <http://localhost:4321/>. Edit Markdown or colocated images under `guides/`; Starlight rebuilds and refreshes the affected page automatically. The preview maps shared guides to `/guides/maintainer/` and server-only guides to `/guides/server/maintainer/`, matching their production routes.
+Open <http://localhost:4321/>. Edit Markdown or colocated images under `guides/`; Starlight rebuilds and refreshes the affected page automatically. All authored pages share one **Guides** navigation section and use `/guides/<page>/` routes, matching production. Source subdirectories organize repository files without creating audience or API-target groups in the published site.
 
 Before opening a pull request, verify the affected pages at desktop and mobile widths and run:
 

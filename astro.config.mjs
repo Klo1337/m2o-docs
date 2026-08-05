@@ -9,10 +9,7 @@ export default defineConfig({
       description: "Local preview of the public, maintainer-authored M2O documentation.",
       customCss: ["./src/styles/custom.css"],
       social: [{ icon: "github", label: "M2O documentation on GitHub", href: "https://github.com/mafia2online/docs" }],
-      sidebar: [
-        { label: "Shared guides", items: [{ autogenerate: { directory: "guides/maintainer" } }] },
-        { label: "Server guides", items: [{ autogenerate: { directory: "guides/server/maintainer" } }] },
-      ],
+      sidebar: [{ label: "Guides", items: [{ autogenerate: { directory: "guides" } }] }],
     }),
   ],
 });
