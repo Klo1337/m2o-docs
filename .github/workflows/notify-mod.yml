@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - "guides/**"
+      - "docs.config.json"
+      - "assets/logo.png"
+      - "src/styles/production.css"
       - ".github/workflows/notify-mod.yml"
   workflow_dispatch:
 

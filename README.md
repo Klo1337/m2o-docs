@@ -9,6 +9,10 @@ The closed-source mod remains authoritative for generated client and server API 
 - `guides/` contains scripting concepts and shared catalogs.
 - `guides/server/` contains server-only catalogs and resources.
 - Image directories live beside the Markdown document that references them.
+- `docs.config.json` owns the published site's generator pin, branding, links, navigation inputs, and community-content mapping.
+- `src/styles/production.css` is the production theme shared by the standalone site and local preview.
+
+The closed-source Mod repository owns only the generated API contracts, reference metadata, and target binding configuration. It does not own authored website guides or presentation files.
 
 ## Contributing
 

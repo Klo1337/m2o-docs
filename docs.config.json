@@ -1,0 +1,22 @@
+{
+  "servicesCliVersion": "0.6.0",
+  "schemaVersion": 1,
+  "slug": "m2o",
+  "title": "M2O Scripting API",
+  "tagline": "Build multiplayer game modes for Mafia II with the M2O JavaScript runtime.",
+  "accentColor": "#c62828",
+  "logo": "assets/logo.png",
+  "links": [
+    { "label": "M2O on GitHub", "url": "https://github.com/mafia2online/Mod" },
+    { "label": "MafiaHub Framework", "url": "https://github.com/MafiaHub/Framework" }
+  ],
+  "communityContent": {
+    "repository": "https://github.com/mafia2online/docs",
+    "authority": "maintainer",
+    "documents": ["guides/*.md"],
+    "targets": {
+      "server": ["guides/server/*.md"]
+    }
+  },
+  "theme": "src/styles/production.css"
+}
