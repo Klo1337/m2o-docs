@@ -16,7 +16,7 @@ const unsubscribe = Events.on("resourceStart", (resourceName) => {
 unsubscribe();
 ```
 
-The generated {@link EventMap} is the authoritative list for the selected client or server environment. Each property type is the callback's argument tuple, and {@link EventName} is the union of its property names. Descriptions state when native code dispatches the event.
+The generated `EventMap` ([server reference](/reference/server/interfaces/eventmap/), [client reference](/reference/client/interfaces/eventmap/)) is the authoritative list for each environment. Each property type is the callback's argument tuple, and `EventName` ([server reference](/reference/server/type-aliases/eventname/), [client reference](/reference/client/type-aliases/eventname/)) is the union of its property names. Descriptions state when native code dispatches the event.
 
 Script-defined events are intentionally open-ended and are not part of `EventMap`. `emit`, `emitTo`, and `emitLocal` carry arbitrary resource-defined arguments. Client-to-server events use `emitServer` and `onClient`; the server keeps those handlers in a separate trust-boundary table so a client-supplied name cannot invoke a native or shared `on` handler. Server-to-client events sent with `emitAllClients` arrive in the client's shared `on` table.
 
