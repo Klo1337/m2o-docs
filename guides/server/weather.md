@@ -9,6 +9,8 @@ Mafia II weather is selected by template name rather than a numeric ID. Each tem
 
 Weather is authoritative server state. `World.setWeather()` replicates the selected template to connected players, while `World.setTime()` controls the synchronized clock independently.
 
+Templates are grouped by season below. Select them from the table matching the server's configured season: a template from the other season is replaced with that season's default rather than displayed. See [Seasons](./seasons.md).
+
 ## Setting weather on the server
 
 ```js
