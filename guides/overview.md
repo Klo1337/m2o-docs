@@ -14,7 +14,8 @@ Use the navigation to browse the globals available to the selected environment. 
 
 ```js
 Events.on("playerConnect", (player) => {
-  player.showMessage(`Welcome, ${player.nickname}`, 5);
+  // HUD text is local to the owning client: send an intent and let the client draw it.
+  player.emit("mygm:welcome", JSON.stringify({ text: `Welcome, ${player.nickname}`, seconds: 5 }));
 
   const spawn = new Vector3(250, 120, 0);
   const vehicle = Vehicle.spawn(32, spawn);
@@ -25,6 +26,10 @@ Events.on("playerConnect", (player) => {
 ## Client example
 
 ```js
+Events.on("mygm:welcome", (data) => {
+  Hud.showMessage(data.text, data.seconds);
+});
+
 Key.bind("f6", () => {
   Hud.setVisible(!Hud.isVisible());
 });
