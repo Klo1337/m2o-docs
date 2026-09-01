@@ -14,7 +14,7 @@
     "repository": "https://github.com/mafia2online/docs",
     "authority": "maintainer",
     "navigation": "unified",
-    "documents": ["guides/*.md", "guides/server/*.md"]
+    "documents": ["guides/*.md", "guides/server/*.md", "guides/client/*.md"]
   },
   "theme": "src/styles/production.css"
 }

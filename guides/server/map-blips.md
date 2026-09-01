@@ -1,6 +1,7 @@
 ---
 title: Map blips
-group: Resources
+sidebar:
+  order: 18
 ---
 
 # Map blip icons

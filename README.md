@@ -7,7 +7,9 @@ The closed-source mod remains authoritative for generated client and server API 
 ## Structure
 
 - `guides/` contains scripting concepts and shared catalogs.
-- `guides/server/` contains server-only catalogs and resources.
+- `guides/server/` contains server-only guides and catalogs.
+- `guides/client/` contains client-only guides.
+- `docs.config.json` selects the published guides with the `communityContent.documents` globs; a guide outside those globs is silently excluded from navigation. Each page's frontmatter `sidebar.order` sets its position in the Guides sidebar (getting-started material first, catalogs last) — give a new guide an order between its neighbours.
 - Image directories live beside the Markdown document that references them.
 - `docs.config.json` owns the published site's generator pin, branding, links, navigation inputs, and community-content mapping.
 - `scripts/sync_contract.mjs` downloads and verifies the public scripting contract.

@@ -1,6 +1,7 @@
 ---
 title: Weapons
-group: Resources
+sidebar:
+  order: 17
 ---
 
 # Weapon IDs

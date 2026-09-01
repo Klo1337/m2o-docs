@@ -1,6 +1,7 @@
 ---
 title: Seasons
-group: Guides
+sidebar:
+  order: 12
 ---
 
 # Seasons
@@ -41,7 +42,7 @@ No scripting changes are needed to support either season. A game mode that never
 
 ## Seasons and weather
 
-Weather templates belong to a season. The [Weather](./weather.md) guide lists them in separate **Summer** and **Winter** tables, and a server should only select templates from the table matching its own season.
+Weather templates belong to a season. The [Weather](/guides/weather/) guide lists them in separate **Summer** and **Winter** tables, and a server should only select templates from the table matching its own season.
 
 Selecting a template from the other season produces a world that does not agree with itself — most visibly, the ground stops rendering correctly. M2O will not display such a combination: a mismatched template is replaced with the season's default and a warning is written to the client log naming the template that was requested. Weather still works normally as long as the template comes from the right table.
 

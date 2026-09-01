@@ -1,6 +1,7 @@
 ---
 title: Vehicle wheels
-group: Resources
+sidebar:
+  order: 19
 ---
 
 # Vehicle wheel models
