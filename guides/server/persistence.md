@@ -58,7 +58,7 @@ The restore half is the `playerConnect` handler above: `player.setPinupCollected
 
 ## What not to persist
 
-State the server replays to joining clients on its own does **not** belong in per-player storage: world time and weather, the [shop item registry](/guides/shops-economy/), blips and other [world entities](/guides/world-entities/), phone book entries. Recreate those once in `resourceStart` — every client, present and future, receives them automatically.
+State the server replays to joining clients on its own does **not** belong in per-player storage: world time and weather, the [shop item registry](/guides/server/shops-economy/), blips and other [world entities](/guides/server/world-entities/), phone book entries. Recreate those once in `resourceStart` — every client, present and future, receives them automatically.
 
 Server-wide state that must survive restarts (a leaderboard, faction treasuries, placed-entity layouts) uses the same save/restore pattern with `resourceStart` as the restore hook instead of `playerConnect`.
 

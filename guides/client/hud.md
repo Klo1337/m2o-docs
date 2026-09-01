@@ -6,7 +6,7 @@ sidebar:
 
 # HUD and native UI
 
-The client owns every native UI element: the HUD layer, messages and hints, the countdown timer, the wanted display, prompts, and screen fades. None of it is replicated — the server drives it with [intents](/guides/ui-architecture/). This guide is the reference for the client half of that conversation.
+The client owns every native UI element: the HUD layer, messages and hints, the countdown timer, the wanted display, prompts, and screen fades. None of it is replicated — the server drives it with [intents](/guides/concepts/ui-architecture/). This guide is the reference for the client half of that conversation.
 
 ## The HUD layer
 
@@ -73,7 +73,7 @@ Events.on("lockpickResult", (result) => {
 });
 ```
 
-`Ui.cancelQuestion()` and `Ui.cancelLockpick()` withdraw an active prompt. When the *server* needs the outcome — unlock the door, pay the reward — relay it up with `Events.emitServer` and validate it there, as shown in [Server, client, and the UI](/guides/ui-architecture/#consequences-up).
+`Ui.cancelQuestion()` and `Ui.cancelLockpick()` withdraw an active prompt. When the *server* needs the outcome — unlock the door, pay the reward — relay it up with `Events.emitServer` and validate it there, as shown in [Server, client, and the UI](/guides/concepts/ui-architecture/#consequences-up).
 
 ## Screen fades and the camera
 
@@ -89,7 +89,7 @@ Camera.isScripted();
 const screen = Camera.worldToScreen(wx, wy, wz);    // { x, y, visible }
 ```
 
-`worldToScreen` is the bridge between world space and anything you draw yourself ([Render2D](/guides/render2d/), [web views](/guides/web-views/)); `visible` is `false` when the point is behind the camera. Both `Fade` calls accept a second `blockInput` argument for cutscene-style transitions.
+`worldToScreen` is the bridge between world space and anything you draw yourself ([Render2D](/guides/client/render2d/), [web views](/guides/client/web-views/)); `visible` is `false` when the point is behind the camera. Both `Fade` calls accept a second `blockInput` argument for cutscene-style transitions.
 
 ## Nametags
 

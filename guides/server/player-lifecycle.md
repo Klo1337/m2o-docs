@@ -21,7 +21,7 @@ Events.on("playerDisconnect", (player) => {
 });
 ```
 
-`playerConnect` is where you restore anything you [persist](/guides/persistence/) — the server's own per-player state (money, weapons, collected pinups) starts fresh each session. Clean up per-player bookkeeping in `playerDisconnect`: entries in your own Maps, blips attached to the player, occupancy records.
+`playerConnect` is where you restore anything you [persist](/guides/server/persistence/) — the server's own per-player state (money, weapons, collected pinups) starts fresh each session. Clean up per-player bookkeeping in `playerDisconnect`: entries in your own Maps, blips attached to the player, occupancy records.
 
 The `Player` handle carries connection-level identity you can key storage on: `steamId`, `discordId`, `hardwareId`, plus `ping`, `ip`, and `kick(reason)`.
 

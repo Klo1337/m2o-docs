@@ -25,7 +25,7 @@ Key.unbind("f6");
 
 Two ownership rules keep binds predictable:
 
-- Binds fire only in-session **while no UI owns input** — an open chat box, menu, world map, or focused [web view](/guides/web-views/) suspends them.
+- Binds fire only in-session **while no UI owns input** — an open chat box, menu, world map, or focused [web view](/guides/client/web-views/) suspends them.
 - Binds are **resource-owned**: they are cleared automatically when your resource stops.
 
 A bind that should have a replicated effect relays to the server, which applies it authoritatively — the client never mutates shared state itself:
@@ -36,7 +36,7 @@ Key.bind("r", "down", () => {
 });
 ```
 
-The matching, whitelist-validating server handler is shown in the [Events guide](/guides/events/#the-trust-boundary).
+The matching, whitelist-validating server handler is shown in the [Events guide](/guides/concepts/events/#the-trust-boundary).
 
 ## Enabling and disabling all input
 
@@ -62,7 +62,7 @@ Controls.getStyle();
 
 `NoWeapons` is the classic no-weapon-zone building block. The style survives respawn, so clear it explicitly when the restriction ends.
 
-Server-driven gating is the usual [intent pattern](/guides/ui-architecture/) — the server decides *who* is restricted, the client applies the mask:
+Server-driven gating is the usual [intent pattern](/guides/concepts/ui-architecture/) — the server decides *who* is restricted, the client applies the mask:
 
 ```js title="server/main.js"
 // Entering the safe zone:
@@ -104,4 +104,4 @@ if (lp) {
 }
 ```
 
-`Bone` enumerates the full Mafia II skeleton, `VehiclePart` the semantic vehicle slots (doors by hinge side and row, hood, trunk); a part the model lacks returns `null`. Combined with `Camera.worldToScreen`, bone and part transforms anchor [Render2D](/guides/render2d/) or web-view overlays to things in the world.
+`Bone` enumerates the full Mafia II skeleton, `VehiclePart` the semantic vehicle slots (doors by hinge side and row, hood, trunk); a part the model lacks returns `null`. Combined with `Camera.worldToScreen`, bone and part transforms anchor [Render2D](/guides/client/render2d/) or web-view overlays to things in the world.

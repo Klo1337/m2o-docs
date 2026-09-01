@@ -50,16 +50,16 @@ Server and client declarations must be loaded separately. A global shown in one 
 
 **Start here:**
 
-- [Your first resource](/guides/getting-started/) — the manifest, entry points, and sharing code between resources.
-- [Running a server](/guides/server-setup/) — `server.json`, ports, and hosting.
+- [Your first resource](/guides/basics/getting-started/) — the manifest, entry points, and sharing code between resources.
+- [Running a server](/guides/basics/server-setup/) — `server.json`, ports, and hosting.
 
 **The two ideas everything builds on:**
 
-- [Events](/guides/events/) — listeners, the client↔server bridge, and the trust boundary.
-- [Server, client, and the UI](/guides/ui-architecture/) — why UI is client-side and the intent pattern that follows.
+- [Events](/guides/concepts/events/) — listeners, the client↔server bridge, and the trust boundary.
+- [Server, client, and the UI](/guides/concepts/ui-architecture/) — why UI is client-side and the intent pattern that follows.
 
-**Server-side systems:** [chat and commands](/guides/chat-commands/), the [player lifecycle](/guides/player-lifecycle/), [vehicles](/guides/vehicles/), [world entities and triggers](/guides/world-entities/), [shops and economy](/guides/shops-economy/), [persistence](/guides/persistence/), and [seasons](/guides/seasons/).
+**Server-side systems:** [chat and commands](/guides/server/chat-commands/), the [player lifecycle](/guides/server/player-lifecycle/), [vehicles](/guides/server/vehicles/), [world entities and triggers](/guides/server/world-entities/), [shops and economy](/guides/server/shops-economy/), [persistence](/guides/server/persistence/), and [seasons](/guides/server/seasons/).
 
-**Client-side systems:** the [HUD and native UI](/guides/hud/), [input and controls](/guides/input-controls/), [Render2D](/guides/render2d/), and [web views](/guides/web-views/).
+**Client-side systems:** the [HUD and native UI](/guides/client/hud/), [input and controls](/guides/client/input-controls/), [Render2D](/guides/client/render2d/), and [web views](/guides/client/web-views/).
 
-**Illustrated catalogs:** [weapon IDs](/guides/weapons/), [map blip icons](/guides/map-blips/), [vehicle wheel models](/guides/wheels/), and [weather templates](/guides/weather/).
+**Illustrated catalogs:** [weapon IDs](/guides/catalogs/weapons/), [map blip icons](/guides/catalogs/map-blips/), [vehicle wheel models](/guides/catalogs/wheels/), and [weather templates](/guides/catalogs/weather/).

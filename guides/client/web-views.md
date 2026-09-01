@@ -6,7 +6,7 @@ sidebar:
 
 # Web views
 
-For interfaces richer than [Render2D](/guides/render2d/) widgets — menus, inventories, scoreboards with real layout — the client can open embedded browser views and drive them with HTML, CSS, and page JavaScript. The `Web` global manages the views; a small event bridge connects the page to your client script, and from there the normal [client↔server events](/guides/events/#crossing-the-network) reach the server.
+For interfaces richer than [Render2D](/guides/client/render2d/) widgets — menus, inventories, scoreboards with real layout — the client can open embedded browser views and drive them with HTML, CSS, and page JavaScript. The `Web` global manages the views; a small event bridge connects the page to your client script, and from there the normal [client↔server events](/guides/concepts/events/#crossing-the-network) reach the server.
 
 ## Shipping and serving pages
 
@@ -41,7 +41,7 @@ Web.showView(viewId);
 Web.isViewVisible(viewId);
 ```
 
-An unfocused, visible view is a passive overlay — a HUD panel that still renders live data while the player drives. Remember that [key binds](/guides/input-controls/) do not fire while a focused view owns input.
+An unfocused, visible view is a passive overlay — a HUD panel that still renders live data while the player drives. Remember that [key binds](/guides/client/input-controls/) do not fire while a focused view owns input.
 
 ## Page ↔ script events
 
@@ -93,7 +93,7 @@ Events.onClient("mygm:ui", (player, data) => {
 });
 ```
 
-The server-side handler follows the usual [trust rules](/guides/events/#the-trust-boundary): whitelist the actions, take the player from the handler argument, validate everything else.
+The server-side handler follows the usual [trust rules](/guides/concepts/events/#the-trust-boundary): whitelist the actions, take the player from the handler argument, validate everything else.
 
 ## Navigation and diagnostics
 

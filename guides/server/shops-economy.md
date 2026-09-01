@@ -65,7 +65,7 @@ Slot indexes are positions in the shop's retail item layout. Disabled slots grey
 
 ## Opening and closing programmatically
 
-The menu itself is client-side, so the server asks for it with an [intent](/guides/ui-architecture/):
+The menu itself is client-side, so the server asks for it with an [intent](/guides/concepts/ui-architecture/):
 
 ```js title="client/main.js"
 CLIENT_CALLS["shop.open"]  = (a) => Shop.open(a.shopName);  // must be streamed in
@@ -76,7 +76,7 @@ CLIENT_CALLS["shop.close"] = ()  => Shop.close();
 
 ## Replacing a shop with your own UI
 
-To swap the native menu for a custom interface (a [web view](/guides/web-views/), say), veto the **synchronous** client `shopOpen` event. This stops the menu *before anything is drawn* — calling `Shop.close()` afterwards is too late, the native menu is already fading in:
+To swap the native menu for a custom interface (a [web view](/guides/client/web-views/), say), veto the **synchronous** client `shopOpen` event. This stops the menu *before anything is drawn* — calling `Shop.close()` afterwards is too late, the native menu is already fading in:
 
 ```js title="client/main.js"
 Events.on("shopOpen", (shop) => {
@@ -86,7 +86,7 @@ Events.on("shopOpen", (shop) => {
 });
 ```
 
-Server-side, a vetoed open still fires `playerShopEnter` with `nativeOpened === false` — so the server always knows the player is at a shop, whichever interface handles it. From there, your custom UI's purchases flow through your own [client events](/guides/events/#crossing-the-network), with the same server-side charging discipline as above.
+Server-side, a vetoed open still fires `playerShopEnter` with `nativeOpened === false` — so the server always knows the player is at a shop, whichever interface handles it. From there, your custom UI's purchases flow through your own [client events](/guides/concepts/events/#crossing-the-network), with the same server-side charging discipline as above.
 
 ## Jukeboxes
 

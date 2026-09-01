@@ -22,7 +22,7 @@ resources/
         └── main.js       # runs on every player's machine (sandboxed V8)
 ```
 
-The split matters: the two entry points see **different APIs** and never share memory. The server owns authoritative game state — players, vehicles, world time, money. The client owns presentation and input — HUD, key binds, web views, the camera. They talk through [events](/guides/events/).
+The split matters: the two entry points see **different APIs** and never share memory. The server owns authoritative game state — players, vehicles, world time, money. The client owns presentation and input — HUD, key binds, web views, the camera. They talk through [events](/guides/concepts/events/).
 
 ## The manifest
 
@@ -139,7 +139,7 @@ const utils = Exports.get("shared-utils", "utils");
 
 ## Cleaning up
 
-Entities you create server-side (vehicles, [blips, markers, labels](/guides/world-entities/)) are not garbage-collected when your script loses the reference — they live until destroyed or until the server stops. Tear down what you created in `resourceStop`:
+Entities you create server-side (vehicles, [blips, markers, labels](/guides/server/world-entities/)) are not garbage-collected when your script loses the reference — they live until destroyed or until the server stops. Tear down what you created in `resourceStop`:
 
 ```js title="server/main.js"
 const spawnedVehicles = [];
@@ -163,6 +163,6 @@ Load the server and client declarations **separately** — a global documented i
 
 ## Where to go next
 
-- [Events](/guides/events/) — how the two environments communicate.
-- [Server, client, and the UI](/guides/ui-architecture/) — why UI calls live on the client and how the server drives them.
-- [Running a server](/guides/server-setup/) — `server.json` and hosting.
+- [Events](/guides/concepts/events/) — how the two environments communicate.
+- [Server, client, and the UI](/guides/concepts/ui-architecture/) — why UI calls live on the client and how the server drives them.
+- [Running a server](/guides/basics/server-setup/) — `server.json` and hosting.

@@ -6,7 +6,7 @@ sidebar:
 
 # Render2D
 
-Render2D draws 2D interface elements — rectangles, text, textures — through the game's own native renderer. Compared to a [web view](/guides/web-views/), it costs no embedded browser, composites into the game's real UI layers (it can sit *under* the HUD or inside the phone screen), and uses the game's fonts and textures. It is the right tool for HUD-grade widgets: health bars, scoreboards, speedometers, subtitles.
+Render2D draws 2D interface elements — rectangles, text, textures — through the game's own native renderer. Compared to a [web view](/guides/client/web-views/), it costs no embedded browser, composites into the game's real UI layers (it can sit *under* the HUD or inside the phone screen), and uses the game's fonts and textures. It is the right tool for HUD-grade widgets: health bars, scoreboards, speedometers, subtitles.
 
 ## The model
 

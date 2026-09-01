@@ -80,7 +80,7 @@ Events.onClient("mygm:vehicleToggle", (player, data) => {
 Two client events are dispatched **synchronously**, just before the native behavior they announce. Returning `false` from a handler suppresses that behavior entirely:
 
 - **`chatSend`** — fires when the player submits the chat input. Return `false` to swallow the line (for example to implement client-side command handling). `Chat.send(text)` bypasses this event.
-- **`shopOpen`** — fires just before Mafia II's native city-shop menu opens. Returning `false` stops the menu before anything is drawn — the only clean way to replace it with a custom interface, since closing it afterwards would let the native menu flash in first. See [Shops and economy](/guides/shops-economy/).
+- **`shopOpen`** — fires just before Mafia II's native city-shop menu opens. Returning `false` stops the menu before anything is drawn — the only clean way to replace it with a custom interface, since closing it afterwards would let the native menu flash in first. See [Shops and economy](/guides/server/shops-economy/).
 
 ```js title="client/main.js"
 Events.on("shopOpen", (shop) => {

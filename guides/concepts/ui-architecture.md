@@ -105,7 +105,7 @@ Events.on("questionAnswer", (answer) => {
 `answerId` is the 1-based answer slot, or `-1` on timeout. `Ui.showDialog` (a Yes/No confirm) resolves through the `dialogAnswer` client event the same way, and `Ui.startLockpick` through `lockpickResult` (`0` completed, `1` failed, `2` escaped). A purely cosmetic prompt never needs to reach the server at all.
 
 :::caution
-The relay is a client event, so apply the [trust rules](/guides/events/#the-trust-boundary): a client can fabricate `mygm:questionAnswer` without ever seeing a prompt. Track *which* prompt you offered each player server-side, and ignore answers you did not ask for. Never let the payload pick the reward.
+The relay is a client event, so apply the [trust rules](/guides/concepts/events/#the-trust-boundary): a client can fabricate `mygm:questionAnswer` without ever seeing a prompt. Track *which* prompt you offered each player server-side, and ignore answers you did not ask for. Never let the payload pick the reward.
 :::
 
 ## Why this split exists
@@ -116,10 +116,10 @@ Everything the server replicates costs bandwidth for every player in range, fore
 - prompts resolve with zero network round-trips unless the game mode cares;
 - the server stays the single authority on things that must not drift (money, health, vehicle state), and never authority on things that cannot (what is on a particular screen).
 
-The same reasoning explains the input APIs: `Controls.setStyle` gates abilities on the local machine, so the server ships a number down once (see [Input and controls](/guides/input-controls/)) rather than intercepting input packets.
+The same reasoning explains the input APIs: `Controls.setStyle` gates abilities on the local machine, so the server ships a number down once (see [Input and controls](/guides/client/input-controls/)) rather than intercepting input packets.
 
 ## Related guides
 
-- [HUD and native UI](/guides/hud/) — the full `Hud`, `Ui`, `Fade`, and nametag surface.
-- [Render2D](/guides/render2d/) — drawing custom native UI.
-- [Web views](/guides/web-views/) — HTML/CSS interfaces with the same intent/consequence flow.
+- [HUD and native UI](/guides/client/hud/) — the full `Hud`, `Ui`, `Fade`, and nametag surface.
+- [Render2D](/guides/client/render2d/) — drawing custom native UI.
+- [Web views](/guides/client/web-views/) — HTML/CSS interfaces with the same intent/consequence flow.

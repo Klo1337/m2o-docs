@@ -28,7 +28,7 @@ Disable the relay to take full control of chat distribution — team chat, proxi
 Chat.setDefaultRelay(false);
 ```
 
-With the relay off, nothing is forwarded until you do it yourself: forward the line to your chosen recipients with `player.emit`, and draw it client-side (with a [web view](/guides/web-views/), [Render2D](/guides/render2d/), or `Hud.showMessage`).
+With the relay off, nothing is forwarded until you do it yourself: forward the line to your chosen recipients with `player.emit`, and draw it client-side (with a [web view](/guides/client/web-views/), [Render2D](/guides/client/render2d/), or `Hud.showMessage`).
 
 ## A command dispatcher
 
@@ -67,7 +67,7 @@ Events.on("playerCommand", (player, command, args) => {
 });
 ```
 
-`notify()` is the one-line HUD feedback helper from [Server, client, and the UI](/guides/ui-architecture/) — there is no server-side "send chat line" API, so command feedback goes to the player's HUD (or your own chat UI) via an intent.
+`notify()` is the one-line HUD feedback helper from [Server, client, and the UI](/guides/concepts/ui-architecture/) — there is no server-side "send chat line" API, so command feedback goes to the player's HUD (or your own chat UI) via an intent.
 
 :::tip
 Validate arguments the way you would any untrusted input: `args` is whatever the player typed. `Number(...)` plus a range check before every numeric use saves you from `NaN` positions and out-of-range model ids.

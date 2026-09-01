@@ -34,7 +34,7 @@ Every setter replicates; every mirror is a `readonly` property on the handle.
 |:-----|:----|
 | Accessories | `toggleEngine`/`setEngine`, `toggleLights`, `toggleLeftIndicator`/`RightIndicator`, `toggleHazard`, `toggleSiren`, `toggleBeacon`, `toggleHorn`, `toggleHood`, `toggleTrunk` — each with a matching getter |
 | Appearance | `setColor(r,g,b)`, `setColorSecondary`, `setDirt(level)`, `setTuning(level)`, `setWipers`, `setPlate(text)` |
-| Wheels | `setWheelModel(group, name)` (group 0 front / 1 rear / 2 spare — names in the [wheel catalog](/guides/wheels/)), `setWheelState(index, state)` with `VehicleWheelState.Normal`/`Deflated`/`BlownOut` |
+| Wheels | `setWheelModel(group, name)` (group 0 front / 1 rear / 2 spare — names in the [wheel catalog](/guides/catalogs/wheels/)), `setWheelState(index, state)` with `VehicleWheelState.Normal`/`Deflated`/`BlownOut` |
 | Condition | `repair()` (full native restore: deformation, doors, panels, wheels, paint), `explode()`, `setEngineHealth(health)` |
 | Fuel | `setFuel(fuel)`, `getFuel()`, `getFuelCapacity()` — the gauge and fuel consumption are native |
 | Driving | `setSpeedLimiter(enabled)` + `setSpeedLimiterSpeed(kmh)` (the retail cruise cap, server-only; negative speed = model default) |

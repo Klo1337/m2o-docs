@@ -23,7 +23,7 @@ Every entity type shares the `Entity` base: `position`, `rotation`, `virtualWorl
 
 ## Blips
 
-Map icons, drawn for everyone regardless of distance. An icon is a `(library, id)` pair from the game's atlas — see the illustrated [blip icon catalog](/guides/map-blips/) — and `color` picks from the navigation palette (1 player-blue, 2 enemy-red, 4 friendly-green, 5 objective-yellow, …). Blips can follow entities:
+Map icons, drawn for everyone regardless of distance. An icon is a `(library, id)` pair from the game's atlas — see the illustrated [blip icon catalog](/guides/catalogs/map-blips/) — and `color` picks from the navigation palette (1 player-blue, 2 enemy-red, 4 friendly-green, 5 objective-yellow, …). Blips can follow entities:
 
 ```js title="server/main.js"
 Events.on("playerConnect", (player) => {

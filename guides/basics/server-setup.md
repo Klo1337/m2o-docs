@@ -44,7 +44,7 @@ M2O-specific settings live under the `mod` object, so they can never collide wit
 
 | Key | Values | Meaning |
 |:----|:-------|:--------|
-| `season` | `summer` (default), `winter` | The world season. Validated at boot; see the [Seasons](/guides/seasons/) guide. |
+| `season` | `summer` (default), `winter` | The world season. Validated at boot; see the [Seasons](/guides/server/seasons/) guide. |
 | `map_file` | path | A game-mode map asset, relative to a downloaded client resource. |
 
 Validation is strict and happens **at boot**: an invalid value (say, a misspelled season) stops the server with an error naming the key, instead of surfacing as a half-applied world at the first connect. Unknown keys under `mod` are kept with a warning rather than rejected, so downgrading the server does not brick a config file.
@@ -64,7 +64,7 @@ When hosting on a cloud provider, remember the game traffic is **UDP**. Platform
 
 ## Resources
 
-Drop each resource into `resources/` next to the server; every resource found there is loaded at startup, ordered by its manifest `priority` (lower starts first) and its declared `resourceDependencies`. See [Your first resource](/guides/getting-started/) for the manifest format.
+Drop each resource into `resources/` next to the server; every resource found there is loaded at startup, ordered by its manifest `priority` (lower starts first) and its declared `resourceDependencies`. See [Your first resource](/guides/basics/getting-started/) for the manifest format.
 
 Console input works while the server runs. Lines that are not a built-in server command are raised to scripts through the `consoleCommand` event:
 
