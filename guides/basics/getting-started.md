@@ -6,7 +6,7 @@ sidebar:
 
 # Your first resource
 
-Everything a game mode does in M2O lives in a **resource**: a directory with a `package.json` manifest and one or more JavaScript entry points. The server loads every resource in its `resources/` directory at startup, runs the server entry in Node.js, and streams the client entry to each player, where it runs in a sandboxed V8 context.
+Everything a game mode does in M2O lives in a **resource**: a directory with a `package.json` manifest and one or more JavaScript files. The server loads every resource in its `resources/` directory at startup, runs its server scripts in Node.js, and streams its client scripts to each player, where they run in a sandboxed V8 context.
 
 This guide builds a minimal two-file resource and explains every field along the way.
 
@@ -15,14 +15,14 @@ This guide builds a minimal two-file resource and explains every field along the
 ```text
 resources/
 └── my-gamemode/
-    ├── package.json      # manifest: entry points, dependencies, load order
+    ├── package.json      # manifest: script roles, dependencies, load order
     ├── server/
     │   └── main.js       # runs on the server (Node.js)
     └── client/
         └── main.js       # runs on every player's machine (sandboxed V8)
 ```
 
-The split matters: the two entry points see **different APIs** and never share memory. The server owns authoritative game state — players, vehicles, world time, money. The client owns presentation and input — HUD, key binds, web views, the camera. They talk through [events](/guides/concepts/events/).
+The split matters: the two sides see **different APIs** and never share memory. The server owns authoritative game state — players, vehicles, world time, money. The client owns presentation and input — HUD, key binds, web views, the camera. They talk through [events](/guides/concepts/events/).
 
 ## The manifest
 
@@ -33,8 +33,8 @@ The split matters: the two entry points see **different APIs** and never share m
   "author": "You",
   "description": "My first M2O game mode",
   "mafiahub": {
-    "server": "server/main.js",
-    "client": "client/main.js",
+    "clientScripts": ["client/main.js"],
+    "serverScripts": ["server/main.js"],
     "priority": 10
   }
 }
@@ -44,11 +44,35 @@ The top-level fields follow npm conventions. Everything M2O-specific sits under 
 
 | Key | Meaning |
 |:----|:--------|
-| `server` | Server entry point, relative to the resource root. Optional — a resource can be client-only. |
-| `client` | Client entry point, streamed to and executed on every connecting player. Optional. |
+| `clientScripts` | Scripts executed on every connecting player. Shipped to clients. |
+| `serverScripts` | Scripts executed on the server. **Never shipped to clients.** |
+| `sharedScripts` | Scripts executed on both sides. Shipped to clients. Run before the role-specific ones. |
+| `files` | Files shipped to clients but not executed — web-view pages, styles, images, fonts. Globs allowed. |
 | `priority` | Load order. Lower numbers start earlier; a library resource should use a lower priority than the game modes that consume it. |
 | `exports` | Names this resource registers for other resources to import (see below). |
 | `resourceDependencies` | Resources that must be present, with semver ranges. |
+
+Scripts run in the order you list them, shared scripts first. Paths are relative to the resource
+root and must be explicit files — only `files` accepts globs, so execution order is always exactly
+what the manifest says.
+
+### What reaches the player
+
+A resource is packaged, encrypted and streamed to each connecting client. **What ships is derived
+from the roles you declare**, not from a separate list: `clientScripts`, `sharedScripts`, `files`
+and `package.json` go out; `serverScripts` never does. Keep credentials, database queries and admin
+checks in `serverScripts` and they stay on the server.
+
+If a resource declares no `files`, the packager falls back to scanning the directories holding your
+client scripts and warns in the server log. That fallback cannot tell a server bundle from a client
+one, so declare `files` on anything that ships assets.
+
+:::note
+**Upgrading an older resource.** The earlier `client`, `server` and `clientFiles` keys still work —
+they fold into the lists above. To move across, replace `"client": "client/main.js"` with
+`"clientScripts": ["client/main.js"]`, `"server"` with `"serverScripts"`, and list your assets
+under `"files"`.
+:::
 
 ## A minimal server entry
 
@@ -97,8 +121,7 @@ A resource can register values under an export name, and any other resource can 
   "name": "shared-utils",
   "version": "1.0.0",
   "mafiahub": {
-    "server": "utils.js",
-    "client": "utils.js",
+    "sharedScripts": ["utils.js"],
     "exports": ["utils"],
     "priority": 0
   }
@@ -126,7 +149,7 @@ const utils = Exports.get("shared-utils", "utils");
 {
   "name": "my-gamemode",
   "mafiahub": {
-    "server": "server/main.js",
+    "serverScripts": ["server/main.js"],
     "resourceDependencies": [
       { "name": "shared-utils", "version": ">=1.0.0" }
     ],
@@ -155,7 +178,7 @@ Events.on("resourceStop", (resourceName) => {
 
 ## Editor autocomplete
 
-The same TypeScript declarations that generate this reference can be loaded into your editor. Point a `tsconfig.json` at the published contract's `server/api.d.ts` or `client/api.d.ts` for the environment each entry point runs in, and you get autocomplete and type checking for the whole API.
+The same TypeScript declarations that generate this reference can be loaded into your editor. Point a `tsconfig.json` at the published contract's `server/api.d.ts` or `client/api.d.ts` for the environment each side runs in, and you get autocomplete and type checking for the whole API.
 
 :::caution
 Load the server and client declarations **separately** — a global documented in one environment does not exist in the other. `World` exists in both but with different members; `Hud` is client-only; `PhoneBook` is server-only.

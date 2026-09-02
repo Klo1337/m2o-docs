@@ -50,7 +50,7 @@ Server and client declarations must be loaded separately. A global shown in one 
 
 **Start here:**
 
-- [Your first resource](/guides/basics/getting-started/) — the manifest, entry points, and sharing code between resources.
+- [Your first resource](/guides/basics/getting-started/) — the manifest, script roles, and sharing code between resources.
 - [Running a server](/guides/basics/server-setup/) — `server.json`, ports, and hosting.
 
 **The two ideas everything builds on:**
