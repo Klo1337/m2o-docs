@@ -85,14 +85,13 @@ Events.on("playerDisconnect", (player) => {
 function isPlayerNear(vehicle) {
   const v = vehicle.position, vw = vehicle.virtualWorld;
   const radiusSq = PROTECTION_RADIUS * PROTECTION_RADIUS;
-  for (const player of World.players) {
+  return World.players.some((player) => {
     const pw = player.virtualWorld;
     const visible = pw === vw || pw === GLOBAL_VIRTUAL_WORLD || vw === GLOBAL_VIRTUAL_WORLD;
-    if (!visible) continue;
+    if (!visible) return false;
     const dx = player.position.x - v.x, dy = player.position.y - v.y;
-    if (dx * dx + dy * dy <= radiusSq) return true;
-  }
-  return false;
+    return dx * dx + dy * dy <= radiusSq;
+  });
 }
 
 setInterval(() => {

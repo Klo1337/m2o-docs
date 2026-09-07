@@ -71,7 +71,7 @@ Console input works while the server runs. Lines that are not a built-in server 
 ```js title="server/main.js"
 Events.on("consoleCommand", (command, args) => {
   if (command === "players") {
-    console.log(`${World.players.size} player(s) online`);
+    console.log(`${World.players.length} player(s) online`);
   }
 });
 ```

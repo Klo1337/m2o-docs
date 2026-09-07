@@ -80,7 +80,7 @@ Lines typed into the **server console** that are not a built-in server command a
 ```js title="server/main.js"
 Events.on("consoleCommand", (command, args) => {
   if (command === "players") {
-    for (const p of World.players) console.log(`  ${p.nickname} (ping ${p.ping}ms)`);
+    World.players.forEach((p) => console.log(`  ${p.nickname} (ping ${p.ping}ms)`));
   }
 });
 ```
